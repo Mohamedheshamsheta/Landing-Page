@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #050505;
+  --paper: #efefef;
+  --accent: #e6d0a7;
+  --muted: #121212;
+}
+
+:root.light {
+  --ink: #fcfcfc;
+  --paper: #1a1a1a;
+  --accent: #b8975e;
+  --muted: #f3f3f3;
+}
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Tinos", "Times New Roman", Times, serif;
+  
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+@layer base {
+  body {
+    @apply bg-ink text-paper selection:bg-accent selection:text-ink antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply tracking-tighter;
+  }
+
+  /* Accessibility: Clear focus states globally */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink;
+  }
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.luxury-card {
+  @apply bg-muted/40 backdrop-blur-xl border border-accent/10 rounded-[2.5rem] p-8 transition-all duration-500 hover:border-accent/40 hover:bg-muted/60 hover:shadow-[0_0_50px_rgba(212,175,55,0.05)];
+}
+
+.luxury-button {
+  @apply bg-accent text-ink rounded-full px-12 py-5 font-black text-[10px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 active:scale-95 transition-all duration-500 shadow-[0_15px_40px_rgba(212,175,55,0.2)] flex items-center justify-center gap-2;
+}
+
+.luxury-input {
+  @apply bg-muted/50 border border-accent/10 rounded-2xl py-4 px-6 text-sm text-paper focus:ring-4 focus:ring-accent/5 focus:border-accent/30 transition-all duration-300 outline-none;
+}
+
+.dot-matrix {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.luxury-shadow {
+  @apply shadow-[0_20px_50px_rgba(0,0,0,0.03)];
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-ink;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/20 rounded-full hover:bg-accent/40 transition-colors;
+}
